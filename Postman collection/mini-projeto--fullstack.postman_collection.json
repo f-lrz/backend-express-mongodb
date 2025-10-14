@@ -16,9 +16,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/",
+							"raw": "{{baseURLlocal}}/",
 							"host": [
-								"{{baseURL}}"
+								"{{baseURLlocal}}"
 							],
 							"path": [
 								""
@@ -42,9 +42,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseURL}}/api/auth/register",
+							"raw": "{{baseURLlocal}}/api/auth/register",
 							"host": [
-								"{{baseURL}}"
+								"{{baseURLlocal}}"
 							],
 							"path": [
 								"api",
@@ -70,9 +70,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseURL}}/api/auth/login",
+							"raw": "{{baseURLlocal}}/api/auth/login",
 							"host": [
-								"{{baseURL}}"
+								"{{baseURLlocal}}"
 							],
 							"path": [
 								"api",
@@ -106,9 +106,9 @@
 							"raw": "{\r\n  \"email\": \"a.silva@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}"
 						},
 						"url": {
-							"raw": "{{baseURL}}/api/auth/protected",
+							"raw": "{{baseURLlocal}}/api/auth/protected",
 							"host": [
-								"{{baseURL}}"
+								"{{baseURLlocal}}"
 							],
 							"path": [
 								"api",
@@ -122,7 +122,7 @@
 			]
 		},
 		{
-			"name": "vercel requests",
+			"name": "hosted requests",
 			"item": [
 				{
 					"name": "root",
@@ -142,15 +142,9 @@
 							}
 						},
 						"url": {
-							"raw": "https://mini-projeto-fullstack-onm9.vercel.app/",
-							"protocol": "https",
+							"raw": "{{baseURLhosted}}",
 							"host": [
-								"mini-projeto-fullstack-onm9",
-								"vercel",
-								"app"
-							],
-							"path": [
-								""
+								"{{baseURLhosted}}"
 							]
 						}
 					},
@@ -171,17 +165,9 @@
 							}
 						},
 						"url": {
-							"raw": "https://mini-projeto-fullstack-onm9.vercel.app/api/auth/register",
-							"protocol": "https",
+							"raw": "{{baseURLhosted}}",
 							"host": [
-								"mini-projeto-fullstack-onm9",
-								"vercel",
-								"app"
-							],
-							"path": [
-								"api",
-								"auth",
-								"register"
+								"{{baseURLhosted}}"
 							]
 						}
 					},
@@ -202,12 +188,9 @@
 							}
 						},
 						"url": {
-							"raw": "https://mini-projeto-fullstack-onm9.vercel.app/api/auth/login",
-							"protocol": "https",
+							"raw": "{{baseURLhosted}}/api/auth/login",
 							"host": [
-								"mini-projeto-fullstack-onm9",
-								"vercel",
-								"app"
+								"{{baseURLhosted}}"
 							],
 							"path": [
 								"api",
@@ -234,12 +217,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://mini-projeto-fullstack-onm9.vercel.app/api/auth/protected",
-							"protocol": "https",
+							"raw": "{{baseURLhosted}}/api/auth/protected",
 							"host": [
-								"mini-projeto-fullstack-onm9",
-								"vercel",
-								"app"
+								"{{baseURLhosted}}"
 							],
 							"path": [
 								"api",
@@ -279,13 +259,16 @@
 	],
 	"variable": [
 		{
-			"key": "baseURL",
+			"key": "baseURLlocal",
+			"value": ""
+		},
+		{
+			"key": "baseURLhosted",
 			"value": ""
 		},
 		{
 			"key": "token",
-			"value": "",
-			"type": "default"
+			"value": ""
 		}
 	]
 }
