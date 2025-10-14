@@ -4,7 +4,7 @@
 		"name": "mini-projeto--fullstack",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "48945915",
-		"_collection_link": "https://filipe-alves-3740700c-4663513.postman.co/workspace/teste-ttg~86aed5d0-faad-4da4-83ec-40c20ea55448/collection/48945915-9ee11020-9b7b-48ec-8b37-91fec96d85e0?action=share&source=collection_link&creator=48945915"
+		"_collection_link": "https://filipe-alves-3740700c-4663513.postman.co/workspace/86aed5d0-faad-4da4-83ec-40c20ea55448/collection/48945915-9ee11020-9b7b-48ec-8b37-91fec96d85e0?action=share&source=collection_link&creator=48945915"
 	},
 	"item": [
 		{
@@ -28,13 +28,13 @@
 					"response": []
 				},
 				{
-					"name": "register",
+					"name": "cadastro bem-sucedido",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Rogério Mota\",\r\n  \"email\": \"r.mota@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
+							"raw": "{\r\n  \"name\": \"Geraldo Solto\",\r\n  \"email\": \"g.solto@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -56,7 +56,7 @@
 					"response": []
 				},
 				{
-					"name": "login",
+					"name": "login bem-sucedido",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -84,7 +84,7 @@
 					"response": []
 				},
 				{
-					"name": "protected",
+					"name": "protected token válido",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -157,7 +157,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Rogério Mota\",\r\n  \"email\": \"r.mota@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
+							"raw": "{\r\n  \"name\": \"Hélio Rios\",\r\n  \"email\": \"h.rios@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

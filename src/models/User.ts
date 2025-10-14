@@ -26,6 +26,13 @@ const UserSchema = new Schema<IUser>({
     type: String,
     required: [true, 'A senha é obrigatória.'],
     select: false, // Não retorna a senha em queries por padrão
+    validate: {
+      validator: function(value: string) {
+        // A expressão regular /\d/ testa se existe pelo menos um dígito na string.
+        return /\d/.test(value);
+      },
+      message: 'A senha deve conter pelo menos um número.',
+    },
   },
 }, { timestamps: true });
 

@@ -1,5 +1,5 @@
 // src/server.ts
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import connectDB from './database/connection';
 import authRoutes from './routes/authRoutes';
@@ -23,6 +23,15 @@ app.use('/api/auth', authRoutes); // Prefixo para rotas de autenticação
 // Rota raiz para verificação
 app.get('/', (req, res) => {
   res.send('API de Autenticação com JWT está rodando!');
+});
+
+// Middleware de tratamento de erros de JSON mal formatado
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  if (err instanceof SyntaxError && 'body' in err) {
+    logger.error('Requisição com JSON mal formatado recebida.', err);
+    return res.status(400).json({ error: 'JSON mal formatado.' });
+  }
+  next();
 });
 
 app.listen(PORT, () => {
