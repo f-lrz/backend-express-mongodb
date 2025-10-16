@@ -4,7 +4,7 @@
 		"name": "mini-projeto--fullstack",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "48945915",
-		"_collection_link": "https://filipe-alves-3740700c-4663513.postman.co/workspace/86aed5d0-faad-4da4-83ec-40c20ea55448/collection/48945915-9ee11020-9b7b-48ec-8b37-91fec96d85e0?action=share&source=collection_link&creator=48945915"
+		"_collection_link": "https://filipe-alves-3740700c-4663513.postman.co/workspace/teste-ttg~86aed5d0-faad-4da4-83ec-40c20ea55448/collection/48945915-9ee11020-9b7b-48ec-8b37-91fec96d85e0?action=share&source=collection_link&creator=48945915"
 	},
 	"item": [
 		{
@@ -34,7 +34,91 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Geraldo Solto\",\r\n  \"email\": \"g.solto@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
+							"raw": "{\r\n  \"name\": \"Caio Bastos\",\r\n  \"email\": \"c.bastos@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURLlocal}}/api/auth/register",
+							"host": [
+								"{{baseURLlocal}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastro email repetido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Rogério Mota\",\r\n  \"email\": \"r.mota@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURLlocal}}/api/auth/register",
+							"host": [
+								"{{baseURLlocal}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastro senha inválida",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Tamires Reis\",\r\n  \"email\": \"t.reis@email.com\",\r\n  \"password\": \"senhaForte\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURLlocal}}/api/auth/register",
+							"host": [
+								"{{baseURLlocal}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastro email inválido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Ester Pinto\",\r\n  \"email\": \"e.pintoemail.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -84,6 +168,90 @@
 					"response": []
 				},
 				{
+					"name": "login senha inválida",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"r.mota@email.com\",\r\n  \"password\": \"senhaForte12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURLlocal}}/api/auth/login",
+							"host": [
+								"{{baseURLlocal}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login email inválido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"r.mo@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURLlocal}}/api/auth/login",
+							"host": [
+								"{{baseURLlocal}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login requisição mal formatada",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"r.mota@email.com\",\r\n  \"passwo\": \"senhaForte123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURLlocal}}/api/auth/login",
+							"host": [
+								"{{baseURLlocal}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "protected token válido",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -95,6 +263,78 @@
 								{
 									"key": "token",
 									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"a.silva@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseURLlocal}}/api/auth/protected",
+							"host": [
+								"{{baseURLlocal}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"protected"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "protected sem token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"a.silva@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseURLlocal}}/api/auth/protected",
+							"host": [
+								"{{baseURLlocal}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"protected"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "protected token inválido",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}a",
 									"type": "string"
 								}
 							]
@@ -151,13 +391,13 @@
 					"response": []
 				},
 				{
-					"name": "register",
+					"name": "cadastro",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Hélio Rios\",\r\n  \"email\": \"h.rios@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
+							"raw": "{\r\n  \"name\": \"Tales Rocha\",\r\n  \"email\": \"t.rocha@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -165,9 +405,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseURLhosted}}",
+							"raw": "{{baseURLhosted}}/api/auth/register",
 							"host": [
 								"{{baseURLhosted}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
 							]
 						}
 					},
@@ -180,7 +425,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"r.mota@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
+							"raw": "{\r\n  \"email\": \"f.dalto@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
