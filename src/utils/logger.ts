@@ -11,9 +11,6 @@ const logger = winston.createLogger({
   ),
   transports: [
     new winston.transports.Console(),
-    // Em produção, você pode adicionar um transporte para salvar logs em arquivos:
-    // new winston.transports.File({ filename: 'error.log', level: 'error' }),
-    // new winston.transports.File({ filename: 'combined.log' }),
   ],
 });
 

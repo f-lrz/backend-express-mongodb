@@ -25,7 +25,7 @@ const UserSchema = new Schema<IUser>({
   password: {
     type: String,
     required: [true, 'A senha é obrigatória.'],
-    select: false, // Não retorna a senha em queries por padrão
+    select: false,
     validate: {
       validator: function(value: string) {
         // A expressão regular /\d/ testa se existe pelo menos um dígito na string.

@@ -31,12 +31,12 @@ class AuthService {
     try {
       const user = await User.findOne({ email }).select('+password');
       if (!user) {
-        throw new Error('Credenciais inválidas.'); // Mensagem genérica por segurança
+        throw new Error('Credenciais inválidas.');
       }
 
       const isMatch = await user.comparePassword(password);
       if (!isMatch) {
-        throw new Error('Credenciais inválidas.'); // Mensagem genérica por segurança
+        throw new Error('Credenciais inválidas.');
       }
       
       const secret = process.env.JWT_SECRET;

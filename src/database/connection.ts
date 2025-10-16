@@ -1,7 +1,7 @@
 // src/database/connection.ts
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import logger from '../utils/logger'; // Criaremos este logger em breve
+import logger from '../utils/logger';
 
 dotenv.config();
 
@@ -20,7 +20,7 @@ const connectDB = async () => {
     logger.info('Conexão com o MongoDB estabelecida com sucesso.');
   } catch (error) {
     logger.error('Erro ao conectar com o MongoDB:', error);
-    process.exit(1); // Encerra a aplicação se não conseguir conectar ao banco
+    process.exit(1);
   }
 };
 

@@ -18,7 +18,7 @@ app.use(express.json());
 connectDB();
 
 // Rotas da Aplicação
-app.use('/api/auth', authRoutes); // Prefixo para rotas de autenticação
+app.use('/api/auth', authRoutes); 
 
 // Rota raiz para verificação
 app.get('/', (req, res) => {
