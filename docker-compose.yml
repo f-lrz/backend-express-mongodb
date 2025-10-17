@@ -1,0 +1,39 @@
+# docker-compose.yml
+
+version: '3.8'
+
+services:
+  # Serviço do banco de dados MongoDB
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb_auth_api
+    restart: always
+    ports:
+      # Expõe a porta do MongoDB para sua máquina local (e para o mongo-express)
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  # Serviço do Mongo Express (Interface Web para o MongoDB)
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo_express_auth_api
+    restart: always
+    ports:
+      # Expõe a interface do mongo-express na porta 8081 da sua máquina
+      - "8081:8081"
+    environment:
+      # Variáveis de ambiente para o mongo-express se conectar ao mongodb
+      # O `mongodb` aqui é o nome do serviço do banco de dados definido acima
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: password
+      # Como nosso banco local não tem autenticação, não precisamos de usuário/senha
+      # ME_CONFIG_MONGODB_ENABLE_ADMIN: "false" # Opcional
+    depends_on:
+      # Garante que o serviço do mongodb inicie antes do mongo-express
+      - mongodb 
+
+volumes:
+  mongo-data:
