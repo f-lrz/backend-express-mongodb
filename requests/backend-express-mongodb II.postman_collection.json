@@ -1,0 +1,476 @@
+{
+	"info": {
+		"_postman_id": "e153871c-8cef-4746-a789-688916215007",
+		"name": "backend-express-mongodb II",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48945915",
+		"_collection_link": "https://filipe-alves-3740700c-4663513.postman.co/workspace/teste-ttg~86aed5d0-faad-4da4-83ec-40c20ea55448/collection/48945915-e153871c-8cef-4746-a789-688916215007?action=share&source=collection_link&creator=48945915"
+	},
+	"item": [
+		{
+			"name": "local-requests",
+			"item": [
+				{
+					"name": "CRUD filmes casos de sucesso",
+					"item": [
+						{
+							"name": "cadastro filme",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"O Poderoso Chefão\",\r\n  \"director\": \"Francis Ford Coppola\",\r\n  \"genre\": \"Crime\",\r\n  \"year\": 1972,\r\n  \"rating\": 9.2,\r\n  \"watched\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "listar todos os filmes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "buscar filme",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies?title=O Poderoso Chefão&genre=Crime&watched=true",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "O Poderoso Chefão"
+										},
+										{
+											"key": "genre",
+											"value": "Crime"
+										},
+										{
+											"key": "watched",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "buscar filme por id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies/68f94916beb8ac534d22b9ac",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies",
+										"68f94916beb8ac534d22b9ac"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "editar filme",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"rating\": 9.5,\r\n  \"watched\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies/68f94845beb8ac534d22b9a8",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies",
+										"68f94845beb8ac534d22b9a8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletar filme",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies/ID_DO_FILME_AQUI",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies",
+										"ID_DO_FILME_AQUI"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "CRUD filmes casos de erro",
+					"item": [
+						{
+							"name": "sem token",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "token inválido",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}a",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "requisição mal formatada (JSON)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"Filme Incompleto\"\r\n  \"genre\": \"Suspense\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "requisição mal formatada (validação)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"director\": \"Diretor sem Título\",\r\n  \"genre\": \"Drama\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "acesso indevido",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies/68f94916beb8ac534d22b9ac",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies",
+										"68f94916beb8ac534d22b9ac"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "root",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURLlocal}}",
+							"host": [
+								"{{baseURLlocal}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Nilton Menezes\",\r\n  \"email\": \"n.menezes@email.com\",\r\n  \"password\": \"senhaForte123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURLlocal}}/api/auth/register",
+							"host": [
+								"{{baseURLlocal}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Salva o token na variável 'token' do ambiente\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"token\", jsonData.token);\r",
+									"console.log(\"Token salvo no ambiente!\");"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"n.menezes@email.com\",\r\n    \"password\": \"senhaForte123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURLlocal}}/api/auth/login",
+							"host": [
+								"{{baseURLlocal}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
