@@ -3,6 +3,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import connectDB from './database/connection';
 import authRoutes from './routes/authRoutes';
+import movieRoutes from './routes/movieRoutes'; // <--- 1. IMPORTAR
 import logger from './utils/logger';
 
 // Carrega as variáveis de ambiente do arquivo .env
@@ -19,10 +20,11 @@ connectDB();
 
 // Rotas da Aplicação
 app.use('/api/auth', authRoutes); 
+app.use('/api/movies', movieRoutes); // <--- 2. REGISTRAR
 
 // Rota raiz para verificação
 app.get('/', (req, res) => {
-  res.send('API de Autenticação com JWT está rodando!');
+  res.send('API de Autenticação com JWT (e Filmes) está rodando!');
 });
 
 // Middleware de tratamento de erros de JSON mal formatado
