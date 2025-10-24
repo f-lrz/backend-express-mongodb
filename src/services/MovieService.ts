@@ -72,10 +72,10 @@ class MovieService {
   }
 
   /**
-   * Atualiza um filme (PUT ou PATCH).
+   * Atualiza PARCIALMENTE um filme (PATCH).
    * Garante que o filme pertença ao usuário antes de atualizar.
    */
-  public async update(movieId: string, movieData: Partial<IMovie>, userId: string): Promise<IMovie | null> {
+  public async partialUpdate(movieId: string, movieData: Partial<IMovie>, userId: string): Promise<IMovie | null> {
     try {
       // Encontra e atualiza, garantindo que o _id e o user correspondam.
       // { new: true } retorna o documento atualizado.
@@ -86,17 +86,51 @@ class MovieService {
       );
 
       if (!updatedMovie) {
-        logger.warn(`Falha ao atualizar: Filme ${movieId} não encontrado ou não pertence ao usuário ${userId}`);
+        logger.warn(`Falha ao atualizar (PATCH): Filme ${movieId} não encontrado ou não pertence ao usuário ${userId}`);
         return null;
       }
 
-      logger.info(`Filme ${movieId} atualizado pelo usuário ${userId}`);
+      logger.info(`Filme ${movieId} atualizado (PATCH) pelo usuário ${userId}`);
       return updatedMovie;
     } catch (error: any) {
-      logger.error(`Erro ao atualizar filme: ${error.message}`, { error });
+      logger.error(`Erro ao atualizar (PATCH) filme: ${error.message}`, { error });
       throw error;
     }
   }
+
+  /**
+   * SUBSTITUI um filme (PUT).
+   * Garante que o filme pertença ao usuário antes de substituir.
+   */
+  public async replace(movieId: string, movieData: Omit<IMovie, 'user'>, userId: string): Promise<IMovie | null> {
+    try {
+      // Prepara o documento de substituição.
+      // É crucial adicionar o 'user' para manter a associação.
+      const replacementData = {
+        ...movieData,
+        user: userId 
+      };
+
+      // Encontra e substitui, garantindo que o _id e o user correspondam.
+      const replacedMovie = await Movie.findOneAndReplace(
+        { _id: movieId, user: userId },
+        replacementData,
+        { new: true, runValidators: true }
+      );
+
+      if (!replacedMovie) {
+        logger.warn(`Falha ao substituir (PUT): Filme ${movieId} não encontrado ou não pertence ao usuário ${userId}`);
+        return null;
+      }
+
+      logger.info(`Filme ${movieId} substituído (PUT) pelo usuário ${userId}`);
+      return replacedMovie;
+    } catch (error: any) {
+      logger.error(`Erro ao substituir (PUT) filme: ${error.message}`, { error });
+      throw error;
+    }
+  }
+
 
   /**
    * Remove um filme, garantindo que pertença ao usuário.

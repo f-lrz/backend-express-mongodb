@@ -54,16 +54,13 @@ class MovieController {
     }
   }
 
-  // Este método lida com PUT e PATCH
+  // Este método agora lida APENAS com PATCH
   public async update(req: AuthenticatedRequest, res: Response): Promise<Response> {
     try {
       const userId = req.user!.id;
       const movieId = req.params.id;
       
-      // O service usa $set, então funciona para PATCH.
-      // Para um PUT "puro" (que substitui), a lógica no service seria diferente.
-      // Mas para a maioria das APIs, $set é o comportamento esperado para ambos.
-      const updatedMovie = await MovieService.update(movieId, req.body, userId);
+      const updatedMovie = await MovieService.partialUpdate(movieId, req.body, userId);
 
       if (!updatedMovie) {
         return res.status(404).json({ error: 'Filme não encontrado.' });
@@ -80,6 +77,36 @@ class MovieController {
       return res.status(500).json({ error: 'Erro interno do servidor.' });
     }
   }
+
+  // NOVO MÉTODO para lidar com PUT
+  public async replace(req: AuthenticatedRequest, res: Response): Promise<Response> {
+    try {
+      const userId = req.user!.id;
+      const movieId = req.params.id;
+
+      // Validação simples: PUT deve conter o 'title', que é obrigatório
+      if (!req.body.title) {
+         return res.status(400).json({ error: 'Requisição PUT deve conter o corpo completo do objeto, incluindo "title".' });
+      }
+      
+      const replacedMovie = await MovieService.replace(movieId, req.body, userId);
+
+      if (!replacedMovie) {
+        return res.status(404).json({ error: 'Filme não encontrado.' });
+      }
+
+      return res.status(200).json(replacedMovie);
+    } catch (error: any) {
+      if (error.name === 'ValidationError') {
+        return res.status(400).json({ error: error.message });
+      }
+      if (error.name === 'CastError') {
+        return res.status(400).json({ error: 'ID do filme inválido.' });
+      }
+      return res.status(500).json({ error: 'Erro interno do servidor.' });
+    }
+  }
+
 
   public async delete(req: AuthenticatedRequest, res: Response): Promise<Response> {
     try {

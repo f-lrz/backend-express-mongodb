@@ -20,7 +20,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"title\": \"O Poderoso Chefão\",\r\n  \"director\": \"Francis Ford Coppola\",\r\n  \"genre\": \"Crime\",\r\n  \"year\": 1972,\r\n  \"rating\": 9.2,\r\n  \"watched\": true\r\n}",
+									"raw": "{\r\n  \"title\": \"Interestelar\",\r\n  \"director\": \"Christopher Nolan\",\r\n  \"genre\": \"Ficção\",\r\n  \"year\": 2014,\r\n  \"rating\": 9.1,\r\n  \"watched\": true\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -64,7 +64,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseURLlocal}}/api/movies?title=O Poderoso Chefão&genre=Crime&watched=true",
+									"raw": "{{baseURLlocal}}/api/movies?title=Interestelar&genre=Ficção&watched=true",
 									"host": [
 										"{{baseURLlocal}}"
 									],
@@ -75,11 +75,11 @@
 									"query": [
 										{
 											"key": "title",
-											"value": "O Poderoso Chefão"
+											"value": "Interestelar"
 										},
 										{
 											"key": "genre",
-											"value": "Crime"
+											"value": "Ficção"
 										},
 										{
 											"key": "watched",
@@ -96,14 +96,14 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseURLlocal}}/api/movies/68f94916beb8ac534d22b9ac",
+									"raw": "{{baseURLlocal}}/api/movies/68fba263aade6e7b3c5408a7",
 									"host": [
 										"{{baseURLlocal}}"
 									],
 									"path": [
 										"api",
 										"movies",
-										"68f94916beb8ac534d22b9ac"
+										"68fba263aade6e7b3c5408a7"
 									]
 								}
 							},
@@ -112,11 +112,11 @@
 						{
 							"name": "editar filme",
 							"request": {
-								"method": "PATCH",
+								"method": "PUT",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"rating\": 9.5,\r\n  \"watched\": false\r\n}",
+									"raw": "{\r\n  \"title\": \"Interestelar\",\r\n  \"year\": 2014,\r\n  \"watched\": false\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -124,14 +124,42 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURLlocal}}/api/movies/68f94845beb8ac534d22b9a8",
+									"raw": "{{baseURLlocal}}/api/movies/68fba263aade6e7b3c5408a7",
 									"host": [
 										"{{baseURLlocal}}"
 									],
 									"path": [
 										"api",
 										"movies",
-										"68f94845beb8ac534d22b9a8"
+										"68fba263aade6e7b3c5408a7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "editar filme parcialmente",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"watched\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURLlocal}}/api/movies/68fba263aade6e7b3c5408a7",
+									"host": [
+										"{{baseURLlocal}}"
+									],
+									"path": [
+										"api",
+										"movies",
+										"68fba263aade6e7b3c5408a7"
 									]
 								}
 							},
@@ -143,14 +171,14 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{baseURLlocal}}/api/movies/ID_DO_FILME_AQUI",
+									"raw": "{{baseURLlocal}}/api/movies/68fba263aade6e7b3c5408a7",
 									"host": [
 										"{{baseURLlocal}}"
 									],
 									"path": [
 										"api",
 										"movies",
-										"ID_DO_FILME_AQUI"
+										"68fba263aade6e7b3c5408a7"
 									]
 								}
 							},
