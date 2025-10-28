@@ -13,8 +13,19 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://frontend-react-mongodb.filipe2025.tech'
+];
+
 app.use(cors({
-  origin: 'http://localhost:5173' // Permite acesso do seu frontend local
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
 
 // Middleware para o Express entender JSON
