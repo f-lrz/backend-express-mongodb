@@ -21,10 +21,10 @@ router.get('/', MovieController.getAll);
 router.get('/:id', MovieController.getById);
 
 // PUT /api/movies/:id - ATUALIZA (SUBSTITUI) todos os dados de um item
-router.put('/:id', MovieController.replace); // <--- MUDANÇA AQUI
+router.put('/:id', MovieController.replace);
 
 // PATCH /api/movies/:id - Atualiza parcialmente os dados de um item
-router.patch('/:id', MovieController.update); // <--- APONTA PARA O 'update' (que chama partialUpdate)
+router.patch('/:id', MovieController.update);
 
 // DELETE /api/movies/:id - Remove um item
 router.delete('/:id', MovieController.delete);
