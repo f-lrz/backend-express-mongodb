@@ -13,6 +13,10 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors({
+  origin: 'http://localhost:5173' // Permite acesso do seu frontend local
+}));
+
 // Middleware para o Express entender JSON
 app.use(express.json());
 
@@ -22,9 +26,6 @@ connectDB();
 // Rotas da Aplicação
 app.use('/api/auth', authRoutes); 
 app.use('/api/movies', movieRoutes);
-app.use(cors({
-  origin: 'http://localhost:5173' // Permite acesso do seu frontend local
-}));
 
 // Rota raiz para verificação
 app.get('/', (req, res) => {
