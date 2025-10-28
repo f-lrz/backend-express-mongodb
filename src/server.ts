@@ -5,6 +5,7 @@ import connectDB from './database/connection';
 import authRoutes from './routes/authRoutes';
 import movieRoutes from './routes/movieRoutes'; // <--- 1. IMPORTAR
 import logger from './utils/logger';
+import cors from 'cors';
 
 // Carrega as variáveis de ambiente do arquivo .env
 dotenv.config();
@@ -20,7 +21,10 @@ connectDB();
 
 // Rotas da Aplicação
 app.use('/api/auth', authRoutes); 
-app.use('/api/movies', movieRoutes); // <--- 2. REGISTRAR
+app.use('/api/movies', movieRoutes);
+app.use(cors({
+  origin: 'http://localhost:5173' // Permite acesso do seu frontend local
+}));
 
 // Rota raiz para verificação
 app.get('/', (req, res) => {
