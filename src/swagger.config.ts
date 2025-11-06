@@ -9,6 +9,22 @@ const options: swaggerJsdoc.Options = {
       version: '1.0.0',
       description: 'Documentação da API de mini-projeto com CRUD de filmes e autenticação JWT, criada para fins acadêmicos.',
     },
+    // --- ESTA É A PARTE QUE FALTAVA ---
+    tags: [
+      {
+        name: 'Auth',
+        description: 'Endpoints de Autenticação e Registro'
+      },
+      {
+        name: 'Movies',
+        description: 'Endpoints para gerenciamento de filmes (Requer Autenticação)'
+      },
+      {
+        name: 'Status',
+        description: 'Rotas de verificação de status da API'
+      }
+    ],
+    // ------------------------------------
     servers: [
       {
         url: 'http://localhost:3000',
@@ -114,7 +130,7 @@ const options: swaggerJsdoc.Options = {
     ],
   },
   // Caminho para os arquivos que contêm as anotações JSDoc (nossas rotas)
-  apis: ['./src/routes/*.ts'],
+  apis: ['./src/routes/*.ts'], // Isso já está correto
 };
 
 const swaggerSpec = swaggerJsdoc(options);
