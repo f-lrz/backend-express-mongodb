@@ -12,5 +12,22 @@ Este projeto foi atualizado com uma nova funcionalidade completa de CRUD (Create
     * `GET /api/movies?filter=value`: Permite filtrar a lista (ex: `?genre=Drama`, `?watched=true`).
     * `GET /api/movies/:id`: Obtém detalhes de um filme específico.
     * `PATCH /api/movies/:id`: Atualiza parcialmente um filme.
-    * `PUT /api/movies/:id`: Atualiza (substitui) um filme (atualmente implementado como PATCH).
+    * `PUT /api/movies/:id`: Atualiza (substitui) um filme.
     * `DELETE /api/movies/:id`: Remove um filme da lista.
+
+---
+
+### Documentação (Swagger)
+
+A documentação completa da API, com todos os endpoints, schemas e exemplos, está disponível e é gerada automaticamente pelo Swagger.
+
+**Acesso Local**
+1. Inicie o servidor com `npm run dev`.
+2. Acesse no seu navegador: [http://localhost:3000/docs](http://localhost:3000/docs)
+
+**Acesso em Produção (Vercel)**
+A documentação também está disponível no ambiente de produção:
+
+[https://\<seu-link-do-vercel\>.vercel.app/docs](https://<seu-link-do-vercel>.vercel.app/docs)
+
+*(Substitua `<seu-link-do-vercel>` pelo link do seu deploy no Vercel)*

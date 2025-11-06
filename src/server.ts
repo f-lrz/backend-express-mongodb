@@ -3,9 +3,14 @@ import express, { Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import connectDB from './database/connection';
 import authRoutes from './routes/authRoutes';
-import movieRoutes from './routes/movieRoutes'; // <--- 1. IMPORTAR
+import movieRoutes from './routes/movieRoutes';
 import logger from './utils/logger';
 import cors from 'cors';
+
+// --- Imports do Swagger ---
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from './swagger.config'; // Nosso arquivo de config
+// --------------------------
 
 // Carrega as variáveis de ambiente do arquivo .env
 dotenv.config();
@@ -34,11 +39,32 @@ app.use(express.json());
 // Conecta ao MongoDB
 connectDB();
 
+// --- Configuração do Swagger ---
+// Serve a documentação na rota /docs
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// -----------------------------
+
 // Rotas da Aplicação
 app.use('/api/auth', authRoutes); 
 app.use('/api/movies', movieRoutes);
 
 // Rota raiz para verificação
+/**
+ * @swagger
+ * /:
+ * get:
+ * summary: Rota raiz da API
+ * tags: [Status]
+ * description: Retorna uma mensagem indicando que a API está no ar.
+ * responses:
+ * 200:
+ * description: Mensagem de sucesso
+ * content:
+ * application/json:
+ * schema:
+ * type: string
+ * example: API de Autenticação com JWT (e Filmes) está rodando!
+ */
 app.get('/', (req, res) => {
   res.send('API de Autenticação com JWT (e Filmes) está rodando!');
 });
@@ -54,4 +80,5 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 
 app.listen(PORT, () => {
   logger.info(`Servidor rodando em http://localhost:${PORT}`);
+  logger.info(`Documentação Swagger disponível em http://localhost:${PORT}/docs`); // Log para o Swagger
 });
