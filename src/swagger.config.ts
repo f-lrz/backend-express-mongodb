@@ -9,7 +9,6 @@ const options: swaggerJsdoc.Options = {
       version: '1.0.0',
       description: 'Documentação da API de mini-projeto com CRUD de filmes e autenticação JWT, criada para fins acadêmicos.',
     },
-    // --- ESTA É A PARTE QUE FALTAVA ---
     tags: [
       {
         name: 'Auth',
@@ -24,7 +23,6 @@ const options: swaggerJsdoc.Options = {
         description: 'Rotas de verificação de status da API'
       }
     ],
-    // ------------------------------------
     servers: [
       {
         url: 'http://localhost:3000',
@@ -36,7 +34,6 @@ const options: swaggerJsdoc.Options = {
       },
     ],
     components: {
-      // Define o esquema de segurança (Bearer Token JWT)
       securitySchemes: {
         bearerAuth: {
           type: 'http',
@@ -45,7 +42,6 @@ const options: swaggerJsdoc.Options = {
           description: 'Insira o token JWT (sem o "Bearer ")',
         },
       },
-      // Define os Schemas (modelos de dados) reutilizáveis
       schemas: {
         User: {
           type: 'object',
@@ -122,15 +118,14 @@ const options: swaggerJsdoc.Options = {
         }
       },
     },
-    // Define a segurança global (todas as rotas protegidas usarão 'bearerAuth')
     security: [
       {
         bearerAuth: [],
       },
     ],
   },
-  // Caminho para os arquivos que contêm as anotações JSDoc (nossas rotas)
-  apis: ['./src/routes/*.ts'], // Isso já está correto
+  // AQUI A MUDANÇA: Adicionei './src/server.ts' para ele ler a rota raiz
+  apis: ['./src/routes/*.ts', './src/server.ts'], 
 };
 
 const swaggerSpec = swaggerJsdoc(options);
